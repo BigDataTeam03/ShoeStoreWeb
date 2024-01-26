@@ -53,7 +53,7 @@ public class ShoeController extends HttpServlet {
 		switch(command_do) {
 		
 		case("/login.do"):
-			command. = new LoginCommand();
+			command = new LoginCommand();
 		
 		}
 		
