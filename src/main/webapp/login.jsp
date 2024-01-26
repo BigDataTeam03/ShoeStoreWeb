@@ -7,7 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-sddssdsdsd
+
+
+	<%=session.getAttribute("CUSTNAME")%>	
+	imageFilePath :<%=session.getAttribute("imageFilePath")%>			
+	<img alt="test" src="<%=session.getAttribute("imageFilePath")%>"/>		
+							
+									
+										
+										
 
 </body>
 </html>

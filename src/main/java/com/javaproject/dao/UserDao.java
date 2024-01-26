@@ -1,0 +1,77 @@
+package com.javaproject.dao;
+
+import java.awt.Image;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.PseudoColumnUsage;
+import java.sql.ResultSet;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
+
+import com.javaproject.dto.UserDto;
+import com.mysql.cj.xdevapi.Statement;
+
+public class UserDao {
+
+	
+	// Field
+	
+	DataSource datasource;
+	
+	//Constructor
+	public UserDao() {
+		
+		try {
+			Context context = new InitialContext();
+			datasource = (DataSource) context.lookup("java:comp/env/jdbc/shoe");
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	
+	}
+	
+	// DB test 용으로 하나만 불러오는 다오
+	public UserDto testDao() {
+		UserDto result= null;
+		Connection connection =null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet =null;
+		
+		try {
+			connection = datasource.getConnection();
+			String query = "select cust_id, cust_pw, name, telno from customer";
+			preparedStatement = connection.prepareStatement(query);
+			resultSet = preparedStatement.executeQuery();
+	
+			
+			if ( resultSet.next()) {
+				String cust_id 	= resultSet.getString("cust_id");
+				String cust_pw 	= resultSet.getString("cust_pw");
+				String name 	= resultSet.getString("name");
+				String telno 	= resultSet.getString("telno");
+				
+				result = new UserDto(cust_id, cust_pw, name, telno);
+			
+			
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			
+		}
+		return result;
+	}
+	
+	
+	//Method
+	
+}
