@@ -1,14 +1,18 @@
 package com.javaproject.base;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.javaproject.command.ShoeCommand;
+
+
+import com.javaproject.command.ListCommand;
+
 
 /**
  * Servlet implementation class ShoeController
@@ -42,21 +46,32 @@ public class ShoeController extends HttpServlet {
 	}
 	protected void actionDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		HttpSession session = request.getSession();
 		
+		 
+		
+		
+		ListCommand command = null;
 		String viewPage = null;
-		ShoeCommand command = null;
+		
 		String uri = request.getRequestURI();
 		String contextPath = request.getContextPath();
 		String command_do = uri.substring(contextPath.length());
 		
 		switch(command_do) {
 		
-		case("/login.do"):
-			command = new LoginCommand();
-		
+		case("/list.do"):
+			command = new ListCommand();
+			command.execute(request, response);
+			viewPage = "list.jsp";
+			break;
+			
+		default:
+			break;
 		}
 		
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage); 
+		dispatcher.forward(request, response); 
 		
 		
 	}
