@@ -11,6 +11,21 @@
 </head>
 <body>
 	<h1> 게시판</h1>
+	
+	 검색선택: 
+	<form action ="">
+			<select name="query">
+				<option value="name">이름</option>
+				<option value="color">색깔</option>
+				<option value="qty" selected="selected">수량</option>
+				<option value="size">사이즈</option>
+				<option value="price">가격</option>
+			</select>
+		<input type="text" name="content" size="30">
+		<input type="submit" value="검색">
+	</form>
+	<br>
+	
 	<table border="1">
 		<tr>
 			<th>번호</th>
@@ -19,23 +34,28 @@
 			<th>수량</th>
 			<th>사이즈</th>
 			<th>가격</th>
+			<th>이미지</th>
 		</tr>
 		
 		<c:forEach items="${list}" var="AdminDto">
 		
 			<tr>
-				<td>${AdminDto.pnum}</td>
-				<td>${AdminDto.pname}</td>
-				<td>${AdminDto.pcolor}</td>
-				<td>${AdminDto.pqty}</td>
-				<td>${AdminDto.psize}</td>
-				<td>${AdminDto.pprice}</td>
+				<td>${AdminDto.product_code}</td>
+				<td>${AdminDto.product_name}</td>
+				<td>${AdminDto.product_color}</td>
+				<td>${AdminDto.product_qty}</td>
+				<td>${AdminDto.product_size}</td>
+				<td>${AdminDto.product_price}</td>
 				
 			</tr>
 		
 		</c:forEach>
 		
-	
 	</table>
+	<br>
+	<form action="" method="post">
+	<input type="button" value="등록">
+	</form>
+	
 </body>
 </html>

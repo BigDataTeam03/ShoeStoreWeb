@@ -13,9 +13,15 @@ public class ListCommand implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
+		System.out.println("List command 가 실행 됩니다.");
+		
 		AdminDao dao = new AdminDao();
 		dao.list();
 		ArrayList<AdminDto> dtos = dao.list();
+		
+		
+		
+		
 		request.setAttribute("list", dtos);
 		
 		

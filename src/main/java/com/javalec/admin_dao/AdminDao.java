@@ -3,6 +3,7 @@ package com.javalec.admin_dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import javax.naming.Context;
@@ -30,6 +31,8 @@ public class AdminDao {
 
 // 검색
 	public ArrayList<AdminDto> list() {
+		
+		System.out.println("dao list 실행 s");
 		ArrayList<AdminDto> dtos = new ArrayList<AdminDto>();
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -37,21 +40,21 @@ public class AdminDao {
 
 		try {
 			connection = dataSource.getConnection();
-			String query = "select pnum, pname, pcolor, pqty, psize, pprice from product";
+			String query = "select product_code, product_name, product_color, product_qty, product_size, product_price, product_image from product;";
 
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
 
 			while (resultSet.next()) {
-				int pnum = resultSet.getInt("pnum");
-				String pname = resultSet.getString("pname");
-				String pcolor = resultSet.getString("pcolor");
-				int pqty = resultSet.getInt("pqty");
-				int psize = resultSet.getInt("psize");
-				int pprice = resultSet.getInt("pprice");
-				// Timestamp bDate = resultSet.getTimestamp("image");
+				int product_code = resultSet.getInt("product_code");
+				String product_name = resultSet.getString("product_name");
+				String product_color = resultSet.getString("product_color");
+				int product_qty = resultSet.getInt("product_qty");
+				int product_size = resultSet.getInt("product_size");
+				int product_price = resultSet.getInt("product_price");
+				Timestamp product_image = resultSet.getTimestamp("product_image");
 
-				AdminDto dto = new AdminDto(pnum, pname, pcolor, pqty, psize, pprice );
+				AdminDto dto = new AdminDto(product_code, product_name, product_color, product_qty, product_size, product_price, product_image);
 				dtos.add(dto);
 
 			}
