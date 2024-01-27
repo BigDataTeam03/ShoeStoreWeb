@@ -20,8 +20,6 @@ public class ListCommand implements Command {
 		ArrayList<AdminDto> dtos = dao.list();
 		
 		
-		
-		
 		request.setAttribute("list", dtos);
 		
 		

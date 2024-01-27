@@ -13,7 +13,7 @@ public class AdminDto {
 	int product_qty;
 	int product_size;
 	int product_price;
-	Timestamp product_image;
+	FileInputStream product_image;
 	
 	public AdminDto() {
 		// TODO Auto-generated constructor stub
@@ -21,9 +21,36 @@ public class AdminDto {
 	
 	
 	public AdminDto(int product_code, String product_name, String product_color, int product_qty, int product_size,
-			int product_price, Timestamp product_image) {
+			int product_price) {
 		super();
 		this.product_code = product_code;
+		this.product_name = product_name;
+		this.product_color = product_color;
+		this.product_qty = product_qty;
+		this.product_size = product_size;
+		this.product_price = product_price;
+	}
+	
+	public AdminDto(int product_code, String product_name, String product_color, int product_qty, int product_size,
+			int product_price, FileInputStream product_image) {
+		super();
+		this.product_code = product_code;
+		this.product_name = product_name;
+		this.product_color = product_color;
+		this.product_qty = product_qty;
+		this.product_size = product_size;
+		this.product_price = product_price;
+		this.product_image = product_image;
+	}
+
+	
+	
+	
+
+
+	public AdminDto(String product_name, String product_color, int product_qty, int product_size, int product_price,
+			FileInputStream product_image) {
+		super();
 		this.product_name = product_name;
 		this.product_color = product_color;
 		this.product_qty = product_qty;
@@ -93,12 +120,12 @@ public class AdminDto {
 	}
 
 
-	public Timestamp getProduct_image() {
+	public FileInputStream getProduct_image() {
 		return product_image;
 	}
 
 
-	public void setProduct_image(Timestamp product_image) {
+	public void setProduct_image(FileInputStream product_image) {
 		this.product_image = product_image;
 	}
 

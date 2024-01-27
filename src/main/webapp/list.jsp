@@ -53,8 +53,8 @@
 		
 	</table>
 	<br>
-	<form action="" method="post">
-	<input type="button" value="등록">
+	<form action="write_view.jsp" method="post">
+	<input type="submit" value="입력">
 	</form>
 	
 </body>
