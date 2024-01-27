@@ -23,13 +23,26 @@ public class productCommand implements ShoeCommand {
 		System.out.println("product Dao 를 실행했다");
 		for(int i =0; i <resultArray.size(); i++) {
 				System.out.println(resultArray.get(i).getProduct_name());
-//				System.out.println(	resultArray.get(i).getImageFilePath());
+				System.out.println("파일의 이미지 패스 입니다. ");
+				
+				System.out.println(	resultArray.get(i).getImageFilePath());
 		}
 		
 		session.setAttribute("product_list",resultArray);
+		session.setAttribute("imageFilePath", resultArray.get(0).getProduct_color());
+		System.out.println(	session.getAttribute("imageFilePath"));
 		
-	
+		
+
+		String webAppPath = request.getSession().getServletContext().getRealPath("/");
+		System.out.println("웹앱패쓰" +webAppPath);
+
+	session.setAttribute("webAppPath",webAppPath+"Screenshot 2024-01-18 at 11.28.44 PM.png");
+		
+		
 		
 	}
+	
+
 
 }
