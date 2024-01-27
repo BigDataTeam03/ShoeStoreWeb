@@ -89,7 +89,26 @@ public class ShoeController extends HttpServlet {
 			System.out.println("------view page 로 넘어갑니다!!------");
 			
 			viewPage= "/product.jsp";
+		
 			
+		case("/list.do"):
+			command = new ListCommand();
+			command.execute(request, response); 
+			viewPage = "/list.jsp";
+			break;
+			
+		case("/write_view.do"):
+			viewPage = "write_view.jsp";
+			break;
+	
+			
+		case("/write.do"):
+			command = new WriteCommand();
+			command.execute(request, response);
+			viewPage = "list.do";
+			break;	
+			
+		
 			default :
 				break;
 			
