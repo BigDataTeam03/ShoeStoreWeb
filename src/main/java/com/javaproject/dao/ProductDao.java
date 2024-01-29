@@ -46,6 +46,15 @@ public class ProductDao {
             connection = datasource.getConnection();
             String query = "SELECT product_code, product_name, product_color, product_qty, " +
                            "product_size, product_price, product_imageName FROM product";
+                        
+            
+            // group by 로 색상이 달라도 하나로 묶어줌. 
+            String groupViewQuery = "SELECT product_name, product_price,SUM(product_qty) AS total_qty,"
+            		+ " COUNT(product_color) AS color_count "
+            		+ "FROM product "
+            		+ "GROUP BY product_name";
+            
+            
             preparedStatement = connection.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
 
@@ -57,6 +66,13 @@ public class ProductDao {
                 int product_size		= resultSet.getInt("product_size");
                 int product_price 		= resultSet.getInt("product_price");
                 String product_imageName 	= resultSet.getString("product_imageName");
+            	
+//            	String product_name 	= resultSet.getString("product_name");
+//            	int product_price 		= resultSet.getInt("product_price");
+//            	String product_imageName 	= resultSet.getString("product_imageName");
+//            	
+            	
+            	
                 
                 // 상품 목록 시스오 
 //                System.out.println(String.format("Product Code: %d", product_code));
@@ -110,6 +126,7 @@ public class ProductDao {
                 		product_code, product_name, product_color,
                 		product_qty, product_size, product_price,
                 		product_imageName);
+//                ProductDto groupDto = new ProductDto(product_name, product_price,product_imageName );
                 
   
 
@@ -199,5 +216,50 @@ public class ProductDao {
         	e.printStackTrace();
         }
     
+    }
+    public void update(int select_code,int select_qty) {
+    	 
+         
+         System.out.println( " update DAO를 실행합니다.");
+         
+         Connection connection = null;
+         PreparedStatement preparedStatement = null;
+         ResultSet resultSet = null;
+         
+         try {
+             connection = datasource.getConnection();
+             String updateQuery = "update product set product_qty = product_qty - ? where product_code =? ";
+                 
+             
+             
+             
+             preparedStatement = connection.prepareStatement(updateQuery);
+
+             preparedStatement.setInt(1, select_qty);
+             preparedStatement.setInt(2, select_code);
+             
+             System.out.println("실행한 쿼리입니다. ");
+             System.out.println(preparedStatement.toString());
+             
+             preparedStatement.executeUpdate();
+
+            
+             
+             
+           
+             
+             
+         }
+         catch(Exception e) {
+         	e.printStackTrace();
+         }finally {
+             try {
+                 if (preparedStatement != null) preparedStatement.close();
+                 if (connection != null) connection.close();
+             } catch (Exception e) {
+                 e.printStackTrace();
+             }
+         }
+  	  
     }
 }// ㄷEND

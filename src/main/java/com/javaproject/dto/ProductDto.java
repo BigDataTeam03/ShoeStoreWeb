@@ -22,11 +22,29 @@ public class ProductDto {
 	// 가필요하고
 	// 그에대한 수량이 필요함. 그리고 나머지는 다 상품디테일의 스트링안에 정보가 담겨있으므로 만들필요없음 .
 
+	
+	
+
+	
 	public ProductDto(int product_qty, String product_detail) {
 		super();
 		this.product_qty = product_qty;
 		this.product_detail = product_detail;
 	}
+	// 사용자가 볼 페이지 에서 group by 로 불러오는 dto
+	
+	public ProductDto(String product_name, int product_price,String product_imageName) {
+		super();
+		this.product_name = product_name;
+		this.product_price = product_price;
+		this.product_imageName = product_imageName;
+	}
+	
+	
+	
+	
+	
+	
 	// image name 을 가져오는 dto 
 	public ProductDto(
 			int product_code, String product_name, String product_color,
@@ -42,6 +60,7 @@ public class ProductDto {
 		this.product_imageName = product_imageName;
 
 	}
+
 
 	public ProductDto(String product_name, String product_color, int product_qty, int product_size, int product_price,
 			String product_detail) {

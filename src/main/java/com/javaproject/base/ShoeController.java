@@ -16,6 +16,7 @@ import com.javaproject.command.LoginCommand;
 import com.javaproject.command.ShoeCommand;
 import com.javaproject.command.WriteCommand;
 import com.javaproject.command.productCommand;
+import com.javaproject.command.updateCommand;
 
 /**
  * Servlet implementation class ShoeController
@@ -77,25 +78,25 @@ public class ShoeController extends HttpServlet {
 		switch(command_do) {
 		
 		case("/login.do"):
-			System.out.println("login command 를 실행합니다. ");
+			System.out.println("login command 실행 ");
 			command = new LoginCommand();
 			command.execute(request, response);
 			viewPage ="/login.jsp";
 			break;
 		
+		// 유저가 보는 상품 목록
 		case("/product.do"):
-			System.out.println("product view command 를 실행하빈다. ");
+			System.out.println("product view command 실행 ");
 			command= new productCommand();
 			command.execute(request, response);
-			System.out.println("------view page 로 넘어갑니다!!------");
 			
 			viewPage= "/product.jsp";
 			break;
-			
+		// 관리자가 보는 상품 목록
 		case("/list.do"):
 			command = new ListCommand();
 			command.execute(request, response); 
-			viewPage = "/list.jsp";
+			viewPage = "/list.jsp"; 
 			break;
 			
 		case("/write_view.do"):
@@ -113,8 +114,17 @@ public class ShoeController extends HttpServlet {
 		
 			default :
 				break;
-			
+		
+				//결제가 완료되면 남은제고에서 수량을 지움 
+		case("/update.do"):
+			System.out.println("update do 를 실행합니다.");
+			command = new updateCommand();
+			command.execute(request, response);
+			viewPage = "product.do";
 		}
+		
+		
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
 		System.out.println(	session.getAttribute("imageFilePath"));
