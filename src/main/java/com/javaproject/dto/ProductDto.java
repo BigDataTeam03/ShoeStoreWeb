@@ -10,6 +10,7 @@ public class ProductDto {
 	int product_size;
 	int product_price;
 	String imageFilePath;
+	String imageFilePath_ShoeImageDir;
 
 	// Constructor
 	public ProductDto(
@@ -18,7 +19,7 @@ public class ProductDto {
 			int product_code, String product_name, String imageFilePath,
 
 			// 상품 수량 : 상품 사이즈 : 상품 가격 : 상품 색상
-			int product_qty, int product_size, int product_price, String product_color) {
+			int product_qty, int product_size, int product_price, String product_color, String imageFilePath_ShoeImageDir) {
 		super();
 		this.product_code = product_code;
 		this.product_name = product_name;
@@ -27,6 +28,7 @@ public class ProductDto {
 		this.product_size = product_size;
 		this.product_price = product_price;
 		this.imageFilePath = imageFilePath;
+		this.imageFilePath_ShoeImageDir = imageFilePath_ShoeImageDir;
 	}
 
 	public int getProduct_code() {
@@ -84,5 +86,14 @@ public class ProductDto {
 	public void setImageFilePath(String imageFilePath) {
 		this.imageFilePath = imageFilePath;
 	}
+
+	public String getImageFilePath_ShoeImageDir() {
+		return imageFilePath_ShoeImageDir;
+	}
+
+	public void setImageFilePath_ShoeImageDir(String imageFilePath_ShoeImageDir) {
+		this.imageFilePath_ShoeImageDir = imageFilePath_ShoeImageDir;
+	}
+
 
 }

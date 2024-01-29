@@ -66,8 +66,9 @@ public class ProductDao {
                 String imageFileName = "image_" + product_code + ".png";
                 System.out.println("저장되는 이미지 파일 이름: " + imageFileName);
             
-               
+                String imageFilePath_ShoeImageDir = product_code + "_" + product_name + ".png"; 
                 
+                System.out.println("폴더에 저장된 파일 이름 : " + imageFilePath_ShoeImageDir);
                 
                 
                 /////////// 이미지를 만들어서 임의의 주소에 저장하는 코드 
@@ -111,7 +112,10 @@ public class ProductDao {
                 	//  상품 코드      :   상품 이름    :  상품 이미지 
                 		product_code, product_name, imageFileName,
                 	//  상품 수량      :   상품 사이즈  :   상품 가격    :  상품 색상?	
-                        product_qty,  product_size, product_price, product_color);
+                        product_qty,  product_size, product_price, product_color ,
+                    //  ShoeImage 폴더에있는 이미지이름 
+                        imageFilePath_ShoeImageDir
+                        );
                 
 //                
 //                // 절대 경로
