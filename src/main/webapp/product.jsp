@@ -3,68 +3,82 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-
-<style>
-        /* 이미지 크기를 조정하기 위한 CSS */
+    <meta charset="UTF-8">
+    <title>상품 목록</title>
+    <!-- 부트스트랩 CSS 링크 -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #4CAF50; /* 타이틀 글자 색상 */
+            font-family: 'Roboto', sans-serif; /* 세련된 폰트 설정 */
+            font-weight: bold; /* 폰트 굵기 */
+            letter-spacing: 1px; /* 글자 간격 */
+            text-transform: uppercase; /* 대문자 변환 */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #dee2e6;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
         .product-image {
-            width: 100px; /* 원하는 이미지 너비로 조정하세요 */
-            height: auto; /* 높이 자동 조정 */
+            width: 100px;
+            height: auto;
         }
     </style>
-
 </head>
-	<body>
-	
-		<%
-			
-			out.print("현재 페이지의 상대주소  :" +request.getContextPath() +"<br>");
-			String relitivePath = request.getContextPath();
-			String currentWepAppPath_realPath = request.getSession().getServletContext().getRealPath("/");
-			
-			out.print("이미지의 웹엡 패스 입니다 :"+currentWepAppPath_realPath+"<br>");
-			
-		%>
-		<h1>상품 목록 </h1>
-
-		<table border ="1">
-			<tr>
-				<th>상품코드</th>
-				<th>상품명</th>
-				<th>이미지</th>	
-				<th>색깔</th>
-				<th>수량</th>
-				<th>사이즈</th>
-				<th>가격</th>
-			</tr>
-				
-			<c:forEach items="${product_list}" var = "dto">
-				<tr>
-					<td>${dto.product_code}</td>
-					<td>${dto.product_name}</td>
-					<td>${dto.product_name}</td>
-					<td>${dto.getImageFilePath_ShoeImageDir()}</td>
-					<td><img  class="product-image"  alt="no image" src =  "/ShoeStoreWeb_big3/ShoeImage/${dto.getImageFilePath_ShoeImageDir()}"> </td>
-					
-					<td>${dto.product_color}</td>
-					<td>${dto.product_qty}</td>
-					<td>${dto.product_size}</td>
-					<td>${dto.product_price}</td>
-				</tr>
-			</c:forEach>
-			<tr>
-			</tr>
-		</table>
-	
-		
-		imageFilePath :<%=session.getAttribute("imageFilePath")%>			
-	<img alt="test" src="<%=session.getAttribute("imageFilePath")%>"/>
-	
-	</body>
-</html>
+<body>
+    <div class="container">
+        <h1>상품 목록</h1>
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>상품코드</th>
+                    <th>상품명</th>
+                    <th>이미지</th>
+                 
+                    <th>가격</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach items="${product_list}" var="dto">
+                    <tr>
+                        <td style="vertical-align: middle;" >${dto.product_code}</td>
+                        <td style="vertical-align: middle;" ><a href="purchase.jsp?product_name=${dto.product_name}">${dto.product_name}</a></td>
+                        <td style="vertical-align: middle;" ><img class="product-image" alt="no image" src="/ShoeStoreWeb_big3/ShoeImage/${dto.getImageFilePath_ShoeImageDir()}"></td>
+                   
+                        
+                        <td style="vertical-align: middle;"><fmt:formatNumber value="${dto.product_price}" pattern="#,##0 원"/></td>
+                        
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+    </div>
+    <!-- 부트스트랩 JS 및 jQuery 링크 -->
+  

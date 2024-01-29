@@ -33,6 +33,7 @@ public class ProductDao {
         }
     }
 
+    // DB 에서 상품에대한 모든 정보를 불러들이는 dao
     public ArrayList<ProductDto> productImageFetch() {
         ArrayList<ProductDto> resultArray = new ArrayList<>();
         
@@ -175,7 +176,49 @@ public class ProductDao {
         return resultArray;
     }
     
+    
+    // 선택된 상품에 대한 상품디테일을 조회하여 purchase.jsp의 콤보박스에서 db 에 존재하는 색깔, 사이즈를보여주게 하는 dao
+    
+    public void purchaseDetail(String selectedProductName) {
+    	
+        ArrayList<ProductDto> product_details = new ArrayList<>();
+        
+        System.out.println("DAO를 실행합니다.");
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        
+        try {
+            connection = datasource.getConnection();
+            String selectQuery = "SELECT product_detail, product_qty FROM product ";
+                
 
+            String whereQuery =" where product_detail like %?%";
+            
+            
+            preparedStatement = connection.prepareStatement(selectQuery+ whereQuery);
+           
+            preparedStatement.setString(1, selectedProductName);
+            
+            resultSet = preparedStatement.executeQuery();
+          
+            
+            
+        }
+        catch(Exception e) {
+        	e.printStackTrace();
+        	
+        }
+
+    	
+    	
+    }
+    
+    
+
+    
+    
+    /// 기타 Methods
     private void fileFinder(String folderPath) {
     	
     	System.out.println(" 파일 파인더 실행 ");
