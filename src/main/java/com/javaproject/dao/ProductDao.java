@@ -196,12 +196,8 @@ public class ProductDao {
             String whereQuery =" where product_detail like %?%";
             
             
-            
-            
             preparedStatement = connection.prepareStatement(selectQuery+ whereQuery);
-            
-            
-            
+           
             preparedStatement.setString(1, selectedProductName);
             
             resultSet = preparedStatement.executeQuery();
