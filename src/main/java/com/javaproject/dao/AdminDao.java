@@ -1,15 +1,18 @@
 package com.javaproject.dao;
 
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
 import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import com.javaproject.dto.AdminDto;
+
 
 public class AdminDao {
 
@@ -18,7 +21,7 @@ public class AdminDao {
 	public AdminDao() {
 		try {
 			Context context = new InitialContext();
-			dataSource = (DataSource) context.lookup("java:comp/env/jdbc/shoe");
+			dataSource = (DataSource) context.lookup("java:comp/env/jdbc/ShoeStore_Web");
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -29,8 +32,8 @@ public class AdminDao {
 
 
 // 검색
-	public ArrayList<AdminDto> list() {
-		ArrayList<AdminDto> dtos = new ArrayList<AdminDto>();
+	public ArrayList<com.javaproject.dto.AdminDto> list() {
+		ArrayList<com.javaproject.dto.AdminDto> dtos = new ArrayList<com.javaproject.dto.AdminDto>();
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
@@ -51,7 +54,7 @@ public class AdminDao {
 				int product_price = resultSet.getInt("product_price");
 			//	FileInputStream product_image = resultSet.("product_image");
 
-				AdminDto dto = new AdminDto(product_code, product_name, product_color, product_qty, product_size, product_price);
+				com.javaproject.dto.AdminDto dto = new com.javaproject.dto.AdminDto(product_code, product_name, product_color, product_qty, product_size, product_price);
 				dtos.add(dto);
 
 			}
@@ -86,7 +89,7 @@ public class AdminDao {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "insert into product (product_name, product_color, product_qty, product_size, product_price) values (?,?,?,?,?)"; 
+			String query = "insert into product (product_name, product_color, product_qty, product_size, product_price, product_image) values (?,?,?,?,?,?)"; 
 				
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, pName);
@@ -109,9 +112,10 @@ public class AdminDao {
 			}
 		}
 		
+	
+	
+	
 	}
-	
-	
 	
 	
 }//END
