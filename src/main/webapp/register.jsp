@@ -43,6 +43,23 @@
         .error {
             color: red;
         }
+        .input-group {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .input-group .btn-primary {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    .form-control {
+        border-radius: 0.2rem; 
+    }
+
+    .input-group-append {
+        margin-left: -1px;
+    }
     </style>
 </head>
 <body>
@@ -50,10 +67,16 @@
         <h2>회원가입</h2>
         <form action="register_process.jsp" method="post" onsubmit="return validateForm()">
             <div class="form-group">
-                <label for="username">아이디:</label>
-                <input type="text" class="form-control" id="username" name="username" required>
-                <div id="usernameError" class="error"></div>
-            </div>
+   			 <label for="username">아이디:</label>
+   			 <div class="input-group">
+        	<input type="text" class="form-control" id="username" name="username" required>
+       	 <div class="input-group-append">
+            <button type="button" class="btn btn-primary" onclick="checkUsername()">중복 체크</button>
+       		 </div>
+   			 </div>
+   			 <div id="usernameError" class="error"></div>
+			</div>
+			<div id="usernameCheckResult" class="error"></div>
             <div class="form-group">
                 <label for="password">비밀번호:</label>
                 <input type="password" class="form-control" id="password" name="password" required>
@@ -131,6 +154,8 @@
 
             return isValid;
         }
+   
+
     </script>
 </body>
 </html>

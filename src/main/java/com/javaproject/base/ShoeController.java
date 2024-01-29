@@ -3,7 +3,6 @@ package com.javaproject.base;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -12,10 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.javaproject.command.ListCommand;
 import com.javaproject.command.LoginCommand;
 import com.javaproject.command.ShoeCommand;
+import com.javaproject.command.WriteCommand;
 import com.javaproject.command.productCommand;
-import com.mysql.cj.Session;
 
 /**
  * Servlet implementation class ShoeController
@@ -81,6 +81,7 @@ public class ShoeController extends HttpServlet {
 			command = new LoginCommand();
 			command.execute(request, response);
 			viewPage ="/login.jsp";
+			break;
 		
 		case("/product.do"):
 			System.out.println("product view command 를 실행하빈다. ");
@@ -89,7 +90,7 @@ public class ShoeController extends HttpServlet {
 			System.out.println("------view page 로 넘어갑니다!!------");
 			
 			viewPage= "/product.jsp";
-		
+			break;
 			
 		case("/list.do"):
 			command = new ListCommand();

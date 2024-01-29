@@ -3,10 +3,10 @@ package com.javaproject.command;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.javalec.admin_dao.AdminDao;
+import com.javaproject.dao.AdminDao;
 
 
-public class WriteCommand implements Command {
+public class WriteCommand implements ShoeCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {

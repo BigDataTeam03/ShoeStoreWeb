@@ -1,7 +1,6 @@
-package com.javalec.admin_dto;
+package com.javaproject.dto;
 
 import java.io.FileInputStream;
-import java.sql.Timestamp;
 
 public class AdminDto {
 	
