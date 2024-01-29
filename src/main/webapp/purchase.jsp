@@ -3,6 +3,15 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
+
+<!-- 이페이지는 전페이지에서 선택한 상품명에 대한 색상, 사이즈, 수량에 대한 정보를 받아서 실제 디비에서 product detail 검색후
+ 검색된 상품의 수량을 수정하여 최종적으로 상품이 결제되게하는 페이지 
+ -->
+
+
+
+
+
 <head>
     <meta charset="UTF-8">
     <title>상품 구매</title>
