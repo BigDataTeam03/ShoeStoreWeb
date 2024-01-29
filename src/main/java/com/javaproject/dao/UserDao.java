@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import com.javaproject.dto.UserDto;
+import com.mysql.cj.Session;
 import com.mysql.cj.xdevapi.Statement;
 
 public class UserDao {
@@ -49,7 +50,7 @@ public class UserDao {
 		
 		try {
 			connection = datasource.getConnection();
-			String query = "select cust_id, cust_pw, name, telno from customer";
+			String query = "select cust_id, cust_pw, cust_name, cust_telno from customer";
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
 	
@@ -57,8 +58,8 @@ public class UserDao {
 			if ( resultSet.next()) {
 				String cust_id 	= resultSet.getString("cust_id");
 				String cust_pw 	= resultSet.getString("cust_pw");
-				String name 	= resultSet.getString("name");
-				String telno 	= resultSet.getString("telno");
+				String name 	= resultSet.getString("cust_name");
+				String telno 	= resultSet.getString("cust_telno");
 				
 				result = new UserDto(cust_id, cust_pw, name, telno);
 			
@@ -114,26 +115,44 @@ public class UserDao {
     }
 
 	//회원가입 기능
-	public void register() {
-		
-		Connection connection =null;
-		PreparedStatement preparedStatement = null;
-		
-		
-		try {
-			connection = datasource.getConnection();
-			String query = "insert into customer (cust_id, cust_pw, cust_name, cust_telno) values (?.?.?.?)";
-			preparedStatement = connection.prepareStatement(query);
+	public void register(String cust_id, String cust_pw, String cust_name, String cust_telno)  {
+	    
+	    Connection connection = null;
+	    PreparedStatement preparedStatement = null;
+	   System.out.println("쿼리문 실행5" + cust_id);
+	    try {
+	        connection = datasource.getConnection();
+	        String query = "INSERT INTO customer (cust_id, cust_pw, cust_name, cust_telno) VALUES (?, ?, ?, ?)";
+	        System.out.println(query);
+	        preparedStatement = connection.prepareStatement(query);
+	        preparedStatement.setString(1, cust_id);
+	        preparedStatement.setString(2, cust_pw);
+	        preparedStatement.setString(3, cust_name);
+	        preparedStatement.setString(4, cust_telno);
+	        
+	       	preparedStatement.executeUpdate();		
+	        
+	       	System.out.println("쿼리문 실행10" + cust_id);
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        // 리소스 닫기
+	        try {
+	            if (preparedStatement != null) {
+	                preparedStatement.close();
+	            }
+	            if (connection != null) {
+	                connection.close();
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	    return;
+	}
 		
 	
-			
-			
-		}catch (Exception e) {
-			e.printStackTrace();
-			
-		}
-		
-	}
 	
 	
 	//Method

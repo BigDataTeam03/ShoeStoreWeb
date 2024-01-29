@@ -1,105 +1,61 @@
 package com.javaproject.dto;
 
 public class UserDto {
-			String custid;
-			String custpw;
-			String name;
-			String telno;
+			String cust_id;
+			String cust_pw;
+			String cust_name;
+			String cust_telno;
 			
 			
 			
 			
-			
-			
-			
-			public UserDto(String custid, String custpw, String name, String telno) {
+			public UserDto(String cust_id, String cust_pw, String cust_name, String cust_telno) {
 				super();
-				this.custid = custid;
-				this.custpw = custpw;
-				this.name = name;
-				this.telno = telno;
+				this.cust_id = cust_id;
+				this.cust_pw = cust_pw;
+				this.cust_name = cust_name;
+				this.cust_telno = cust_telno;
 			}
-
-
-
-
-
-
-
-			public String getCustid() {
-				return custid;
+			public String getCust_id() {
+				return cust_id;
 			}
-
-
-
-
-
-
-
-			public void setCustid(String custid) {
-				this.custid = custid;
+			public void setCust_id(String cust_id) {
+				this.cust_id = cust_id;
 			}
-
-
-
-
-
-
-
-			public String getCustpw() {
-				return custpw;
+			public String getCust_pw() {
+				return cust_pw;
 			}
-
-
-
-
-
-
-
-			public void setCustpw(String custpw) {
-				this.custpw = custpw;
+			public void setCust_pw(String cust_pw) {
+				this.cust_pw = cust_pw;
 			}
-
-
-
-
-
-
-
-			public String getName() {
-				return name;
+			public String getCust_name() {
+				return cust_name;
 			}
-
-
-
-
-
-
-
-			public void setName(String name) {
-				this.name = name;
+			public void setCust_name(String cust_name) {
+				this.cust_name = cust_name;
 			}
-
-
-
-
-
-
-
-			public String getTelno() {
-				return telno;
+			public String getCust_telno() {
+				return cust_telno;
 			}
-
-
-
-
-
-
-
-			public void setTelno(String telno) {
-				this.telno = telno;
+			public void setCust_telno(String cust_telno) {
+				this.cust_telno = cust_telno;
 			}
 			
+			
+			
+			
+			
+			
+			
+			
+
+
+
+
+
+
+
+		
 			
 			
 			
