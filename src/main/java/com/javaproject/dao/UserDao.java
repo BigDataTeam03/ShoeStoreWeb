@@ -113,8 +113,27 @@ public class UserDao {
         return passibleid;
     }
 
+	//회원가입 기능
+	public void register() {
+		
+		Connection connection =null;
+		PreparedStatement preparedStatement = null;
+		
+		
+		try {
+			connection = datasource.getConnection();
+			String query = "insert into customer (cust_id, cust_pw, cust_name, cust_telno) values (?.?.?.?)";
+			preparedStatement = connection.prepareStatement(query);
+		
 	
-	
+			
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			
+		}
+		
+	}
 	
 	
 	//Method
