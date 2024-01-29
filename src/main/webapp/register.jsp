@@ -65,11 +65,11 @@
 <body>
     <div class="container">
         <h2>회원가입</h2>
-        <form action="register_process.jsp" method="post" onsubmit="return validateForm()">
+         <form action="register.do" method="post" onsubmit="return validateForm()">
             <div class="form-group">
    			 <label for="username">아이디:</label>
    			 <div class="input-group">
-        	<input type="text" class="form-control" id="username" name="username" required>
+        	<input type="text" class="form-control" name="cust_id" required>
        	 <div class="input-group-append">
             <button type="button" class="btn btn-primary" onclick="checkUsername()">중복 체크</button>
        		 </div>
@@ -79,23 +79,23 @@
 			<div id="usernameCheckResult" class="error"></div>
             <div class="form-group">
                 <label for="password">비밀번호:</label>
-                <input type="password" class="form-control" id="password" name="password" required>
+                <input type="password" class="form-control"  name="cust_pw" required>
                 <div id="passwordError" class="error"></div>
             </div>
             <div class="form-group">
                 <label for="fullname">이름:</label>
-                <input type="text" class="form-control" id="fullname" name="fullname" required>
+                <input type="text" class="form-control" name="cust_name" required>
                 <div id="fullnameError" class="error"></div>
             </div>
             <div class="form-group">
                 <label for="phone">전화번호:</label>
-                <input type="text" class="form-control" id="phone" name="phone" required>
+                <input type="text" class="form-control" name="cust_telno" required>
                 <div id="phoneError" class="error"></div>
             </div>
             <button type="submit" class="btn btn-primary">가입하기</button>
         </form>
     </div>
-
+    				
     <!-- 부트스트랩 JS 및 jQuery 링크 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>

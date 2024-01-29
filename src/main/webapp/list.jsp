@@ -74,5 +74,7 @@ out.print("총 상품 수: " + totalProductNumber);
 	<input type="submit" value="입력">
 	</form>
 	
+	
+    
 </body>
 </html>

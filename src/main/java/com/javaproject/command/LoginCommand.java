@@ -19,9 +19,9 @@ public class LoginCommand implements ShoeCommand {
 			HttpSession	session = request.getSession();
 			
 			System.out.println("다오를 실행한 결과입니다. ");
-			System.out.println(resultDto.getCustid());
+			System.out.println(resultDto.getCust_id());
 			
-			session.setAttribute("CUSTNAME", resultDto.getCustid());
+			session.setAttribute("CUSTNAME", resultDto.getCust_id());
 			
 		
 	}
