@@ -34,7 +34,8 @@ public class WriteCommand implements ShoeCommand {
 	            Part filePart = request.getPart("filename"); // "filename"은 폼에서 정의한 파일 업로드 필드의 이름
 	            String fileName = filePart.getSubmittedFileName();
 	            
-	            String uploadPath = "/Users/dianakim/Desktop/2024.01.29_ shoeStore_semiver2.0/ShoeStoreWeb/src/main/webapp/ShoeImage/"; // 실제 서버 경로로 변경해야 합니다.
+	            //String uploadPath = "/Users/dianakim/Desktop/2024.01.29_ shoeStore_semiver2.0/ShoeStoreWeb/src/main/webapp/ShoeImage/"; // 실제 서버 경로로 변경해야 합니다.
+	            String uploadPath = "/Users/dianakim/Documents/JSP/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ShoeStoreWeb/"; // 실제 서버 경로로 변경해야 합니다.
 	            String filePath = uploadPath + fileName;
 	            
 	            filePart.write(filePath);
