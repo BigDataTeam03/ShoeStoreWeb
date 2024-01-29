@@ -31,7 +31,7 @@ public class AdminDao {
 
 
 
-// 검색
+	// 검색
 	public ArrayList<com.javaproject.dto.AdminDto> list() {
 		ArrayList<com.javaproject.dto.AdminDto> dtos = new ArrayList<com.javaproject.dto.AdminDto>();
 		Connection connection = null;
@@ -76,29 +76,50 @@ public class AdminDao {
 
 		return dtos;
 	}
-
 	
-	//입력
-	
-	
-
-	public void write(String pName, String pColor, int pQty, int pSize, int pPrice ) {
+	// 입력
+	public void write(int newProductCode, String pName, String pColor, int pQty, int pSize, int pPrice ) {
+		
+		
+		int newPCode = newProductCode;
+		System.out.println("---------쿼리에 넣어지는 변수들 ----------");
+		System.out.println(String.format("newPcode ; %s",newPCode));
+		
+		System.out.println("write dao 를 실행합니다. ");
+		
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "insert into product (product_name, product_color, product_qty, product_size, product_price, product_image) values (?,?,?,?,?,?)"; 
-				
-			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, pName);
-			preparedStatement.setString(2, pColor);
-			preparedStatement.setInt(3, pQty);
-			preparedStatement.setInt(4, pSize);
-			preparedStatement.setInt(5, pPrice);
+			String insertQuery = "insert into product "
+					//	 상품코드        상품명 		  상품 색상        상품재고수량     상품 사이즈 
+					+ "(product_code, product_name, product_color, product_qty, product_size, "
+					// 상품 가격    
+					+ "product_price) "
+					
+					+ "values (?,?,?,?,?,?)"; 
+			
+			System.out.println("query 입니다. \n"+insertQuery);
+			
+
+			
+			
+			preparedStatement = connection.prepareStatement(insertQuery);
+			
+			preparedStatement.setInt   (1, newPCode);
+			preparedStatement.setString(2, pName);
+			preparedStatement.setString(3, pColor);
+			preparedStatement.setInt   (4, pQty);
+			preparedStatement.setInt   (5, pSize);
+			preparedStatement.setInt   (6, pPrice);
+
 			
 			preparedStatement.executeUpdate();
+			
+			System.out.println(" insert query 문입니다.");
+			System.out.println(preparedStatement.toString());
 			
 			
 		}catch(Exception e) {
