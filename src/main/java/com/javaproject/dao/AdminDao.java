@@ -78,7 +78,7 @@ public class AdminDao {
 	}
 	
 	// 입력
-	public void write(int newProductCode, String pName, String pColor, int pQty, int pSize, int pPrice ) {
+	public void write(int newProductCode, String pName, String pColor, int pQty, int pSize, int pPrice, String filename) {
 		
 		
 		int newPCode = newProductCode;
@@ -97,9 +97,9 @@ public class AdminDao {
 					//	 상품코드        상품명 		  상품 색상        상품재고수량     상품 사이즈 
 					+ "(product_code, product_name, product_color, product_qty, product_size, "
 					// 상품 가격    
-					+ "product_price) "
+					+ "product_price , product_imageName) "
 					
-					+ "values (?,?,?,?,?,?)"; 
+					+ "values (?,?,?,?,?,?,?)"; 
 			
 			System.out.println("query 입니다. \n"+insertQuery);
 			
@@ -114,6 +114,7 @@ public class AdminDao {
 			preparedStatement.setInt   (4, pQty);
 			preparedStatement.setInt   (5, pSize);
 			preparedStatement.setInt   (6, pPrice);
+			preparedStatement.setString   (7, filename);
 
 			
 			preparedStatement.executeUpdate();

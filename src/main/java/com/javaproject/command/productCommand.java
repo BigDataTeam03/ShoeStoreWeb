@@ -26,6 +26,15 @@ public class productCommand implements ShoeCommand {
 		
 		
 		System.out.println("product Dao 실행 완료.");
+		for (int i =0 ; i<resultArray.size(); i++) {
+			
+			System.out.println(i);
+			
+		}
+		
+		
+		
+		
 		session.setAttribute("product_list",resultArray);
 
 		
