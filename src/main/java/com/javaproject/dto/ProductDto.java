@@ -11,9 +11,10 @@ public class ProductDto {
 	int product_price;
 	String imageFilePath;
 	String imageFilePath_ShoeImageDir;
-
+	
 	String product_detail;
-
+	 
+	
 	// Constructor
 	public ProductDto(
 

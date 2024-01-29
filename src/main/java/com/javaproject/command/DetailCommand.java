@@ -15,13 +15,16 @@ public class DetailCommand implements ShoeCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		
-				ProductDao dao = new ProductDao();
-				dao.purchaseDetail(String selectedProductName);
-				ArrayList<ProductDto> DetailResult = dao.purchaseDetail(String selectedProductName);
-				HttpSession	session = request.getSession();
-				
-				session.setAttribute("DetailResult", DetailResult);
+		String product_details = request.getParameter("product_details");
+		 
+		ProductDao dao = new ProductDao();
 		
+		
+		ArrayList<ProductDto> detailResult = dao.purchaseDetail(product_details);
+		
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("DetailResult", detailResult);
 
 	}
 
