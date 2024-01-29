@@ -1,17 +1,15 @@
-package com.javalec.admin_dao;
+package com.javaproject.dao;
 
-import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import com.javalec.admin_dto.AdminDto;
+import com.javaproject.dto.AdminDto;
 
 public class AdminDao {
 

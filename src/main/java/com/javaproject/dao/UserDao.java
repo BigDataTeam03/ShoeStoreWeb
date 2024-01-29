@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.PseudoColumnUsage;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -71,7 +72,50 @@ public class UserDao {
 		return result;
 	}
 	
+
+			
+	
+	public boolean checkUsername(String username) {
+        boolean passibleid = false;
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = datasource.getConnection();
+            String query = "SELECT COUNT(*) FROM customer WHERE cust_id = ?";
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, username);
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                int count = resultSet.getInt(1);
+                passibleid = (count == 0); // 0이면 중복 아이디 없음, 1 이상이면 중복 아이디 존재
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // 리소스 해제
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return passibleid;
+    }
+
+	
+	
+	
 	
 	//Method
-	
 }

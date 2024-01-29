@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.javalec.admin_dao.AdminDao;
-import com.javalec.admin_dto.AdminDto;
+import com.javaproject.dao.AdminDao;
+import com.javaproject.dto.AdminDto;
 
-public class ListCommand implements Command {
+public class ListCommand implements ShoeCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
