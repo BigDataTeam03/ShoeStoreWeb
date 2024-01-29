@@ -31,7 +31,7 @@ public class UserDao {
 		
 		try {
 			Context context = new InitialContext();
-			datasource = (DataSource) context.lookup("java:comp/env/jdbc/shoe");
+			datasource = (DataSource) context.lookup("java:comp/env/jdbc/ShoeStore_Web");
 			
 			
 		}catch(Exception e) {
