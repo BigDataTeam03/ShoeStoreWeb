@@ -104,6 +104,7 @@ public class ShoeController extends HttpServlet {
 	
 			
 		case("/write.do"):
+			System.out.println("wirte do 를 실행합니다. ");
 			command = new WriteCommand();
 			command.execute(request, response);
 			viewPage = "list.do";
@@ -116,7 +117,7 @@ public class ShoeController extends HttpServlet {
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
-	System.out.println(	session.getAttribute("imageFilePath"));
+		System.out.println(	session.getAttribute("imageFilePath"));
 		
 		
 	}

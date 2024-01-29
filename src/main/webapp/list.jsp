@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.javaproject.dto.AdminDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -9,7 +11,22 @@
 <meta charset="UTF-8">
 <title>게시판</title>
 </head>
+
+<% 
+
+// "list"라는 속성이 ArrayList인 경우
+ArrayList<AdminDto> list = (ArrayList<AdminDto>) request.getAttribute("list");
+
+// ArrayList의 크기를 가져오기
+int totalProductNumber = list.size();
+out.print("총 상품 수: " + totalProductNumber);
+
+%>
+
+
 <body>
+
+
 	<h1> 게시판</h1>
 	
 	 검색선택: 
@@ -53,7 +70,7 @@
 		
 	</table>
 	<br>
-	<form action="write_view.jsp" method="post">
+	<form action="write_view.jsp?totalProductNumber=<%=totalProductNumber%>" method="post">
 	<input type="submit" value="입력">
 	</form>
 	
