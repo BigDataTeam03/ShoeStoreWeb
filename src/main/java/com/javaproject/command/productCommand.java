@@ -34,6 +34,7 @@ public class productCommand implements ShoeCommand {
 		
 		
 		
+		//product dao -> product command 에서 product list 가 session 저장. 
 		
 		session.setAttribute("product_list",resultArray);
 

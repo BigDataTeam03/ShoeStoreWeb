@@ -8,10 +8,6 @@
  검색된 상품의 수량을 수정하여 최종적으로 상품이 결제되게하는 페이지 
  -->
 
-
-
-
-
 <head>
     <meta charset="UTF-8">
     <title>상품 구매</title>
@@ -20,8 +16,11 @@
 </head>
 
 <%
+	String product_code = request.getParameter("product_code");
     String product_name = request.getParameter("product_name");
     out.print(product_name);
+    
+    
 %>
 
 <body>
@@ -30,35 +29,17 @@
         <hr>
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                <form action="purchase_process.jsp" method="post">
+                <form action="purchaseComplete.jsp?product_code=<%=product_code%>" method="post">
+                <!-- <form action="update.do" method="post"> -->
                     <div class="form-group">
                         <label for="productName">상품명:</label>
                         <input type="text" class="form-control" id="product_name" name="product_name" value="<%=product_name %>" readonly>
                     </div>
                     <div class="form-group">
-                        <label for="color">색상 선택:</label>
-                        <select class="form-control" id="color" name="color">
-                            <option value="Red">빨강</option>
-                            <option value="Blue">파랑</option>
-                            <option value="Green">초록</option>
-                            <option value="Yellow">노랑</option>
-                            <!-- 다른 색상 옵션들을 필요에 따라 추가 -->
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="size">사이즈 선택:</label>
-                        <select class="form-control" id="size" name="size">
-                            <option value="Small">S</option>
-                            <option value="Medium">M</option>
-                            <option value="Large">L</option>
-                            <!-- 다른 사이즈 옵션들을 필요에 따라 추가 -->
-                        </select>
-                    </div>
-                    <div class="form-group">
                         <label for="quantity">수량 선택:</label>
                         <input type="number" class="form-control" id="quantity" name="quantity" min="1" value="1" required>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block">구매하기</button>
+                    <button type="submit" class="btn btn-primary btn-block" >구매하기</button>
                 </form>
             </div>
         </div>
