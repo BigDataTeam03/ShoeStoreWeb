@@ -4,8 +4,18 @@
 
 <%
 	boolean passOrFail = (boolean)session.getAttribute("passOrFail");
+	boolean adminLogin = (boolean)session.getAttribute("adminLogin");
+	
+
 	if(passOrFail){
-		response.sendRedirect("product.do");
+		
+		if(adminLogin){
+			response.sendRedirect("list.do");
+			
+		}else{
+		
+			response.sendRedirect("product.do");
+		}
 	} else {
 		response.sendRedirect("login.do");
 		

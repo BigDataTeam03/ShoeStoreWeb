@@ -45,7 +45,8 @@ public class UserDao {
 	public void login(String cust_id, String cust_pw) {
 		
 	}
-    
+	
+	//Method
 	// 유저체크
 	public boolean checkUserId(String userId) {
         boolean passibleUser = false;
@@ -174,6 +175,5 @@ public class UserDao {
 		
 	
 	
-	
-	//Method
+
 }
