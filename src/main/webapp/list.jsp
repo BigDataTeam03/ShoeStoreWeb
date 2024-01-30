@@ -56,10 +56,12 @@
 
 <% int totalProductNumber = product_list.size(); 
 
-out.print("총 상품 수: " + totalProductNumber);%>	
+//out.print("총 상품 수: " + totalProductNumber);%>	
 <body>
     <div class="container">
         <h1>상품 목록 </h1>
+        <hr>
+        <h3><% out.print("총 상품 수 : " + totalProductNumber); %> <br></h3>
         <table class="table">
             <thead class="thead-light">
                 <tr>

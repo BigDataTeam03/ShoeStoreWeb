@@ -18,28 +18,32 @@
 <%
 	String product_code = request.getParameter("product_code");
     String product_name = request.getParameter("product_name");
-    out.print(product_name);
+    String product_color =request.getParameter("product_color");
+    String product_size =request.getParameter("product_size");
+    //out.print(product_name);
     
     
 %>
 
 <body>
+				<form action="purchaseComplete.jsp" method="post">
+				
+				</form>
     <div class="container">
         <h1 class="text-center">상품 구매</h1>
         <hr>
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                <form action="purchaseComplete.jsp?product_code=<%=product_code%>" method="post">
-                <!-- <form action="update.do" method="post"> -->
+                <form action="purchaseComplete.jsp?product_code=<%=product_code%>&product_name=<%=product_name%>" method="post">
                     <div class="form-group">
-                        <label for="productName">상품명:</label>
-                        <input type="text" class="form-control" id="product_name" name="product_name" value="<%=product_name %>" readonly>
+                        <label for="productName">상품 상세:</label>
+                        <input type="text" class="form-control" id="product_name" name="product_name" value="<%=product_name %> <%=product_color %> <%=product_size %>" readonly>
                     </div>
                     <div class="form-group">
                         <label for="quantity">수량 선택:</label>
                         <input type="number" class="form-control" id="quantity" name="quantity" min="1" value="1" required>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block" >구매하기</button>
+                    <input type="submit" class="btn btn-primary btn-block" value="구매하기">
                 </form>
             </div>
         </div>

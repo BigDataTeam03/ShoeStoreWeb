@@ -32,10 +32,9 @@
 
 <%
 	String code = request.getParameter("product_code");
+	String product_name = request.getParameter("product_name");
 	String qty = request.getParameter("quantity");
-	
-	out.print("product code :"+code+"<br>");
-	out.print("product qty="+qty);
+
 	session.setAttribute("select_code",code);
 	session.setAttribute("select_qty", qty);
 
@@ -43,10 +42,12 @@
 <body>
 
 <div class="container">
-    <h1>구매가 완료되었습니다!</h1>
+    <h1><%=product_name %> <%=qty %> 개 구매가 완료되었습니다!</h1>
     <p>구매해 주셔서 감사합니다.</p>
-    
-    <a href="update.do" class="btn btn-primary">홈으로 돌아가기</a>
+    <form action="update.do" method="post">
+    		<input class="btn btn-primary" type="submit" value="홈으로 돌아가기">
+    </form>
+    <!-- <a href="update.do" class="btn btn-primary" >홈으로 돌아가기</a> -->
 </div>
 
 </body>
