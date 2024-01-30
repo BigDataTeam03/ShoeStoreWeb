@@ -51,38 +51,48 @@
             height: auto;
         }
     </style>
+    
+    
+    
 </head>
 <% ArrayList<ProductDto> product_list = (ArrayList<ProductDto>) session.getAttribute("product_list"); %>
 
 <body>
     <div class="container">
         <h1>상품 목록</h1>
+        <hr>
+       	<p><ins>상품명을 클릭하면 결제페이지가 열립니다.</p> 
         <table class="table">
             <thead class="thead-light">
                 <tr>
                     <th>상품코드</th>
                     <th>상품명</th>
-                    <th>이미지</th>    
+                    <th>상품 이미지</th>    
+                    <th>상품 사이즈</th>
+                    <th>상품 색상</th > 
                     <th>가격</th>
                     <th>재고</th>
                 </tr>
             </thead>
             
-            
             <tbody>
+           
                 <c:forEach items="<%=product_list %>" var="dto">
                     <tr>
+                    
                         <td style="vertical-align: middle;" >${dto.product_code}</td>
-                        <td style="vertical-align: middle;" ><a href="purchase.jsp?product_name=${dto.product_name}&product_code=${dto.product_code}">${dto.product_name}</a></td>
+                        <td style="vertical-align: middle;" > <a href="purchase.jsp?product_name=${dto.product_name}&product_code=${dto.product_code}&product_color=${dto.product_color}&product_size=${dto.product_size}">${dto.product_name}</a></td>
                         <td style="vertical-align: middle;" ><img class="product-image" alt="no image" src="/ShoeStoreWeb_big3/ShoeImage/${dto.product_imageName}"></td>
                         <%-- <td style="vertical-align: middle;" > /ShoeStoreWeb_big3/ShoeImage/${dto.product_imageName})</td> --%>
                    		
                         
+                      <td style="vertical-align: middle;"><fmt:formatNumber value="${dto.product_size}" /></td>
+                      <td style="vertical-align: middle;">${dto.product_color}</td>
                       <td style="vertical-align: middle;"><fmt:formatNumber value="${dto.product_price}" pattern="#,##0 원"/></td> 
                       <td style="vertical-align: middle;"><fmt:formatNumber value="${dto.product_qty}" /></td> 
                         
                     </tr>
-                </c:forEach>
+                </c:forEach>         
             </tbody>
         </table>
     </div>
