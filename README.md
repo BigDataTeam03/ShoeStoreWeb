@@ -1,5 +1,8 @@
 
-# Shoe Store Web Page 
+# Description  
+
+Shoe Store Web Page 
+ 구현된 기능:  로그인, 회원가입, 관리자 로그인, 상품등록, 상품구매 
 <br>
 
 # Project Timeframe
