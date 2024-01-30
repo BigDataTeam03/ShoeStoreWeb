@@ -3,10 +3,10 @@
 <br>
 
 ## Development Timeframe
-<br>
-- 24.01.26일 ~ 24.01.30일
-<br> 
-<br>
+
+- ## 24.01.26일 ~ 24.01.30일
+
+
 Team Member : 박동근, 이서, 강범식, 김수민
 <br>
 
