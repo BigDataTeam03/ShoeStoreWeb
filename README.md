@@ -13,12 +13,12 @@ Team Member : 박동근, 이서, 강범식, 김수민
 Development Environment
 
 
-Programming Language : Java 
+- ## Programming Language : Java 
 
 
-Framework : MVC pattern
+- ## Framework : MVC pattern
 
 
-Database management system : Mysql
+- ## Database management system : Mysql
 
 
