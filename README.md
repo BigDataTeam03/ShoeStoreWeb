@@ -24,4 +24,12 @@ Bootstrap과 MVC Pattern을 참고하여 만든 신발가게입니다.
 
 이 서 : 관리자 상품 등록
 
+## 개발환경
+
+Java 8
+
+Framework : Springboot
+
+Database : Mysql
+
 
