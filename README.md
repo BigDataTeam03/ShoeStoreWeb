@@ -1,8 +1,9 @@
 # ShoeStoreWeb
 ## 프로젝트 소개 : 신발가게 웹페이지
 
-부트스트랩과 MVC Pattern을 참고하여 만든 신발가게입니다. 
+Bootstrap과 MVC Pattern을 참고하여 만든 신발가게입니다. 
 
+## 멤버구성
 
 3조 
 
