@@ -15,7 +15,8 @@ import javax.sql.DataSource;
 
 
 public class AdminDao {
-
+	
+	//관리자 페이지에서 실행하는 모델 
 	DataSource dataSource;
 
 	public AdminDao() {
@@ -52,7 +53,6 @@ public class AdminDao {
 				int product_qty = resultSet.getInt("product_qty");
 				int product_size = resultSet.getInt("product_size");
 				int product_price = resultSet.getInt("product_price");
-			//	FileInputStream product_image = resultSet.("product_image");
 
 				com.javaproject.dto.AdminDto dto = new com.javaproject.dto.AdminDto(product_code, product_name, product_color, product_qty, product_size, product_price);
 				dtos.add(dto);
@@ -77,7 +77,7 @@ public class AdminDao {
 		return dtos;
 	}
 	
-	// 입력
+	// 관리작 상품을 등록 
 	public void write(int newProductCode, String pName, String pColor, int pQty, int pSize, int pPrice,String pDetail, String filename) {
 		
 		
@@ -108,14 +108,14 @@ public class AdminDao {
 			
 			preparedStatement = connection.prepareStatement(insertQuery);
 			
-			preparedStatement.setInt   (1, newPCode);
-			preparedStatement.setString(2, pName);
-			preparedStatement.setString(3, pColor);
-			preparedStatement.setInt   (4, pQty);
-			preparedStatement.setInt   (5, pSize);
-			preparedStatement.setInt   (6, pPrice);
-			preparedStatement.setString   (7, pDetail);
-			preparedStatement.setString   (8, filename);
+			preparedStatement.setInt   	(1, newPCode);
+			preparedStatement.setString	(2, pName);
+			preparedStatement.setString	(3, pColor);
+			preparedStatement.setInt   	(4, pQty);
+			preparedStatement.setInt   	(5, pSize);
+			preparedStatement.setInt   	(6, pPrice);
+			preparedStatement.setString (7, pDetail);
+			preparedStatement.setString (8, filename);
 
 			
 			preparedStatement.executeUpdate();

@@ -11,11 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.javaproject.command.CheckCommand;
 import com.javaproject.command.ListCommand;
 import com.javaproject.command.LoginCommand;
 import com.javaproject.command.ShoeCommand;
 import com.javaproject.command.WriteCommand;
 import com.javaproject.command.productCommand;
+import com.javaproject.command.registerCommand;
 import com.javaproject.command.updateCommand;
 
 /**
@@ -52,21 +54,23 @@ public class ShoeController extends HttpServlet {
 	}
 	
 	protected void actionDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/*
+		 * Description : Controller of shoe store web ver.3.0
+		 * Author : Forrest D Park
+		 * Date : 2024.01.30
+		 * Update  2024.01.30 by D Park
+		 * 		1. Login check 화면 완성 컨트롤러 추가 
+		 * 
+		 */
+		
+		
+		
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		
-//		// ServletContext 객체 가져오기
-//        ServletContext context = getServletContext();
-//
-//        // 웹 애플리케이션 경로 가져오기
-//        String webAppPath = context.getRealPath("/");
-//        
-//        // 경로 출력
-//		System.out.println( "파일 경로 출력 :" + webAppPath ) ;  
-//		response.getWriter().println("웹 애플리케이션 경로: " + webAppPath);
-//		
-			String webAppPath = request.getSession().getServletContext().getRealPath("/");
-			System.out.println("웹앱패쓰" +webAppPath);
+		
+		String webAppPath = request.getSession().getServletContext().getRealPath("/");
+		System.out.println("웹앱패쓰" +webAppPath);
 			
 			
 		String viewPage = null;
@@ -77,6 +81,7 @@ public class ShoeController extends HttpServlet {
 		System.out.println(command_do);
 		switch(command_do) {
 		
+		// 로그인 실행 
 		case("/login.do"):
 			System.out.println("login command 실행 ");
 			command = new LoginCommand();
@@ -84,6 +89,15 @@ public class ShoeController extends HttpServlet {
 			viewPage ="/login.jsp";
 			break;
 		
+		// 유저가 맞는지 확인 
+		case("/check.do"):
+			System.out.println("check command 를 실행합니다. ");
+			command = new CheckCommand();
+			command.execute(request, response);
+			viewPage ="/check.jsp";
+			break;
+			
+			
 		// 유저가 보는 상품 목록
 		case("/product.do"):
 			System.out.println("product view command 실행 ");
@@ -99,28 +113,40 @@ public class ShoeController extends HttpServlet {
 			viewPage = "/list.jsp"; 
 			break;
 			
+		// 상품입력후 결과 
 		case("/write_view.do"):
 			viewPage = "write_view.jsp";
 			break;
 	
-			
+		// 상품 입력 
 		case("/write.do"):
 			System.out.println("wirte do 를 실행합니다. ");
 			command = new WriteCommand();
 			command.execute(request, response);
 			viewPage = "list.do";
-			break;	
+			break;
+			
+			
+		// 회원가입
+		case ("/register.do"):
+		    System.out.println("register command를 실행합니다.");
+		    command = new registerCommand();
+		    command.execute(request, response);
+		    viewPage = "login.jsp";
+		    break;
+		
 			
 		
-			default :
-				break;
-		
-				//결제가 완료되면 남은제고에서 수량을 지움 
+		//결제가 완료되면 남은제고에서 수량을 지움 
 		case("/update.do"):
 			System.out.println("update do 를 실행합니다.");
 			command = new updateCommand();
 			command.execute(request, response);
 			viewPage = "product.do";
+			break;
+			
+		default :
+			break;
 		}
 		
 		

@@ -41,8 +41,7 @@ public class WriteCommand implements ShoeCommand {
 		 try {
 	            Part filePart = request.getPart("filename"); // "filename"은 폼에서 정의한 파일 업로드 필드의 이름
 	            String fileName = filePart.getSubmittedFileName();
-	            insertDao.write(pcode, pName, pColor, pQty, pSize, pPrice,pDetail,fileName);// TODO Auto-generated method stub
-	            //String uploadPath = "/Users/dianakim/Desktop/2024.01.29_ shoeStore_semiver2.0/ShoeStoreWeb/src/main/webapp/ShoeImage/"; // 실제 서버 경로로 변경해야 합니다.
+	            insertDao.write(pcode, pName, pColor, pQty, pSize, pPrice,pDetail,fileName);
 	            String uploadPath = "/Users/forrestdpark/Desktop/JavaProgram/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ShoeStoreWeb_big3/ShoeImage/"; // 실제 서버 경로로 변경해야 합니다.
 	            String filePath = uploadPath + fileName;
 	            filePart.write(filePath);
@@ -56,7 +55,7 @@ public class WriteCommand implements ShoeCommand {
 	        }
 		 
 		 
-		/// 상품 이미지를 세션에 저장하기 위하여 product dao 를 실행합니다. 
+		 	/// 상품 이미지를 세션에 저장하기 위하여 product dao 를 실행합니다. 
 			
 			System.out.println("product command실행 시작");
 			
@@ -71,8 +70,6 @@ public class WriteCommand implements ShoeCommand {
 				System.out.println(i);
 				
 			}
-			
-			
 			
 			//product dao -> product command 에서 product list 가 session 저장. 
 			

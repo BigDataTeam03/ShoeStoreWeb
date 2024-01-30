@@ -32,10 +32,18 @@ public class CheckCommand implements ShoeCommand {
 				System.out.println("환영합니다");
 				
 				session.setAttribute("passOrFail", true);
+				
+				if(userId.equals("admin")&& userPw.equals("1234")) {
+					
+					session.setAttribute("adminLogin", true);
+					
+				}else {
+					session.setAttribute("adminLogin", false);
+				}
+				
 			}else {
 				session.setAttribute("passOrFail", false);
 			}
-			
 		} else {
 			session.setAttribute("passOrFail", false);
 		}

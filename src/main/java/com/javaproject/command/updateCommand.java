@@ -20,9 +20,10 @@ public class updateCommand implements ShoeCommand {
 		ProductDao updateDao = new ProductDao();
 //		dao.update();
 		HttpSession	session = request.getSession();
-		System.out.println("혹시 여기?");
+		
+//		System.out.println("혹시 여기?");
 		int select_code  = Integer.parseInt((String )session.getAttribute("select_code"));
-		System.out.println("아니면 여기?");
+//		System.out.println("아니면 여기?");
 		int select_qty   = Integer.parseInt((String)session.getAttribute("select_qty"));
 		updateDao.update(select_code,select_qty);
 		
