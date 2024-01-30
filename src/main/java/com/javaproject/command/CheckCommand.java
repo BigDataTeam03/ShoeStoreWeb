@@ -13,17 +13,41 @@ public class CheckCommand implements ShoeCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 
+		String userId = request.getParameter("username");
+		String userPw = request.getParameter("password");
+		
 		UserDao dao = new UserDao();
-		UserDto resultDto	=	dao.testDao();
+		boolean idCheckResult	= dao.checkUserId(userId);
 		HttpSession	session = request.getSession();
 		
 		System.out.println("다오를 실행한 결과입니다. ");
-		System.out.println(resultDto.getCust_id());
+		System.out.println(idCheckResult);
 		
-		session.setAttribute("CUSTNAME", resultDto.getCust_id());
+		session.setAttribute("idCheckResult", idCheckResult);
 		
-	
-
+		if(idCheckResult == true ) {
+			boolean pwCheckResult	= dao.checkUserPw(userPw);
+		
+			if(pwCheckResult) {
+				System.out.println("환영합니다");
+				
+				session.setAttribute("passOrFail", true);
+				
+				if(userId.equals("admin")&& userPw.equals("1234")) {
+					
+					session.setAttribute("adminLogin", true);
+					
+				}else {
+					session.setAttribute("adminLogin", false);
+				}
+				
+			}else {
+				session.setAttribute("passOrFail", false);
+			}
+		} else {
+			session.setAttribute("passOrFail", false);
+		}
+			
 	}
 
 }
