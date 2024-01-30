@@ -53,7 +53,7 @@
                 <label for="password">비밀번호:</label>
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
-            <button type="button" class="btn btn-primary" onclick="submitForm('product.jsp')">로그인</button>
+            <button type="button" class="btn btn-primary" onclick="submitForm('check.do')">로그인</button>
             <br>
             <br>
             <button type="button" class="btn btn-primary" onclick="submitForm('register.jsp')">회원가입</button>
